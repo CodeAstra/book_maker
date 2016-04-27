@@ -1,0 +1,29 @@
+* {
+  font-family: $default-font;
+}
+
+.vcenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid transparent;
+  text-align: center;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-weight: 600;
+  }
+}
+
+.btn-outline {
+  color: $light-color;
+  border: 1px solid $light-color;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in;
+
+  &:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: $light-color;
+  }
+}
