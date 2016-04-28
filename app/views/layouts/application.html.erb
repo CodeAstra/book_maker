@@ -12,6 +12,6 @@
 <div class="<%= 'container' unless landing_page? %>">
   <%= yield %>
 </div>
-
+<%= render 'common/footer' unless landing_page? %>
 </body>
 </html>

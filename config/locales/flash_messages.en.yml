@@ -1,0 +1,5 @@
+en:
+  flash_messages:
+    books:
+      deletion_success: "Book deleted successfully"
+      deletion_failure: "Book deletion failed, as you entered incorrect title"

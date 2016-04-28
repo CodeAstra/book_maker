@@ -24,9 +24,11 @@ class BooksController < ApplicationController
   def destroy
     if params[:title_confirmation].downcase == @book.title.downcase
       @book.destroy
-      redirect_to books_path, success: "Book titled '#{@book.title}' is successfully deleted"
+      flash[:success] = I18n.t('flash_messages.books.deletion_success')
+      redirect_to books_path
     else
-      redirect_to book_path(@book), danger: "Book not deleted, as you did not enter the correct book title."
+      flash[:danger] = I18n.t('flash_messages.books.deletion_failure')
+      redirect_to book_path(@book)
     end
   end
 
