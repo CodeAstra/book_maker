@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
+gem 'simple_form'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -20,6 +21,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'annotate'
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rails', require: false
