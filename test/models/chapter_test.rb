@@ -1,16 +1,19 @@
 # == Schema Information
 #
-# Table name: books
+# Table name: chapters
 #
 #  id         :integer          not null, primary key
 #  title      :string
 #  notes      :text
+#  book_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Book < ActiveRecord::Base
-  has_many :chapters
+require 'test_helper'
 
-  validates :title, presence: true
+class ChapterTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

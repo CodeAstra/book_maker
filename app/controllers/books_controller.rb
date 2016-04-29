@@ -19,6 +19,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @chapters = @book.chapters.all
+    @new_chapter = @book.chapters.new
   end
 
   def update
