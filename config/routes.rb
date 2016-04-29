@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'translate' => "home#translate", as: :translate
 
   resources :books do
-    resources :chapters, only: [:create]
+    resources :chapters, only: [:create, :edit, :update, :destroy]
   end
 
   # Example of regular route:

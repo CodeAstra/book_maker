@@ -1,1 +1,6 @@
-<li><%= chapter.title %></li>
+<li id="<%= dom_id chapter %>">
+  <%= chapter.title %>
+  (
+  <%= link_to "Edit", edit_book_chapter_path(chapter.book, chapter), remote: true %>
+  )
+</li>
