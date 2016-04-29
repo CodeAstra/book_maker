@@ -1,6 +1,7 @@
 <li id="<%= dom_id chapter %>">
   <%= chapter.title %>
   (
-  <%= link_to "Edit", edit_book_chapter_path(chapter.book, chapter), remote: true %>
+  <%= link_to "Edit", edit_book_chapter_path(chapter.book, chapter), remote: true %> |
+  <%= link_to "Delete", book_chapter_path(chapter.book, chapter), remote: true, method: :delete, class: "text-danger" %>
   )
 </li>
