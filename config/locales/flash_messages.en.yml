@@ -3,3 +3,4 @@ en:
     books:
       deletion_success: "Book deleted successfully"
       deletion_failure: "Book deletion failed, as you entered incorrect title"
+      updation_success: "Book updated successfully"

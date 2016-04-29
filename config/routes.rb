@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'translate' => "home#translate", as: :translate
 
-  resources :books, only: [:index, :new, :create, :show, :destroy]
+  resources :books
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

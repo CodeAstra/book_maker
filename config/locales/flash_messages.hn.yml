@@ -3,3 +3,4 @@ hn:
     books:
       deletion_success: "पुस्तक मिट गया"
       deletion_failure: "पुस्तक मिटा नहीं"
+      updation_success: "प्लेस होल्डर फ़्लैश मेसेज"
