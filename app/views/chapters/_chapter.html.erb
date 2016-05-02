@@ -2,8 +2,10 @@
   <%= link_to fa_icon('trash'), book_chapter_path(chapter.book, chapter), remote: true, method: :delete, class: "text-danger chapter-delete", data: {confirm: "Are you sure you want to delete the chapter titled: #{chapter.title}? This is irreversible"} %>
   <%= link_to fa_icon('pencil'), edit_book_chapter_path(chapter.book, chapter), remote: true, class: "chapter-edit" %>
   <%= link_to chapter.title, "#", class: "chapter-title", remote: true %>
-  <div class="sections-list">
-    <%= render chapter.sections %>
+  <div class="sections">
+    <div class="sections-list">
+      <%= render chapter.sections %>
+    </div>
     <%= link_to "+ Add Section", "#", data: {toggle: "modal", target: "#new-section-modal-#{chapter.id}"} %>
   </div>
 </div>
@@ -17,7 +19,14 @@
         <h4 class="modal-title" id="myModalLabel">Add Section to <%= chapter.title %></h4>
       </div>
       <div class="modal-body">
-        <h2>Add Section to <%= chapter.title %></h2>
+        <div class="alert alert-danger hidden" role="alert">
+          <%= t 'flash_messages.sections.creation_failure' %>
+        </div>
+        <%= simple_form_for [chapter.book, chapter, @new_sections[chapter.id]], remote: true do |f| %>
+          <%= f.input :title %>
+          <%= f.input :notes %>
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

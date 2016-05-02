@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :chapters, only: [:create, :edit, :update, :destroy] do
-      resources :sections, only: [:destroy]
+      resources :sections, only: [:create]
     end
   end
 

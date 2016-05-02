@@ -1,0 +1,8 @@
+<% if @save_success %>
+  $('#new-section-modal-<%= @chapter.id %> .alert').addClass('hidden');
+  $('#new-section-modal-<%= @chapter.id %> form')[0].reset();
+  $('#new-section-modal-<%= @chapter.id %>').modal('hide');
+  $('#<%= dom_id(@chapter) %> .sections-list').append('<%= j render(@section) %>');
+<% else %>
+  $('#new-section-modal-<%= @chapter.id %> .alert').removeClass('hidden');
+<% end %>
