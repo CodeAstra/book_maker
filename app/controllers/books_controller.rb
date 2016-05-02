@@ -19,7 +19,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @chapters = @book.chapters.all
+    @chapters = @book.chapters.includes(:sections).all
     @new_chapter = @book.chapters.new
   end
 

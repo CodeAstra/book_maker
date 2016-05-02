@@ -1,12 +1,18 @@
-<%= link_to "Delete Book", "#", class: "btn btn-danger pull-right", data: {toggle: "modal", target: "#delete-confirmation-modal"} %>
-<%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary pull-right" %>
-<h1><%= @book.title %></h1>
-<ul id="chapters-list">
-  <%= render @chapters %>
-</ul>
-<%= link_to "+ Add New Chapter", "#", id: "new-chapter-form-trigger" %>
+<section id="book" class="row">
+  <div id="book-content" class="col-md-8 col-md-push-4">
+    <%= link_to "Delete Book", "#", class: "btn btn-danger pull-right", data: {toggle: "modal", target: "#delete-confirmation-modal"} %>
+    <%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary pull-right" %>
+    <h1><%= @book.title %></h1>
+  </div>
+  <div id="sidebar" class="col-md-4 col-md-pull-8">
+    <div id="chapters-list">
+      <%= render @chapters %>
+    </div>
+    <%= link_to "+ Add New Chapter", "#", id: "new-chapter-form-trigger" %>
 
-<%= render partial: 'chapters/form', locals: {chapter: @new_chapter} %>
+    <%= render partial: 'chapters/form', locals: {chapter: @new_chapter} %>
+  </div>
+</section>
 
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="delete-confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

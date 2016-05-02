@@ -1,3 +1,48 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#book {
+  #chapters-list {
+    border-right: 1px solid $dark-color;
+    padding-right: 15px;
+
+    .chapter {
+      a.chapter-title {
+        margin-right: 2.5em;
+        display: block;
+      }
+
+      a.chapter-edit, a.chapter-delete {
+        float: right;
+        margin-left: 0.5em;
+        visibility: hidden;
+      }
+
+      &:hover {
+        a.chapter-edit, a.chapter-delete {
+          visibility: visible;
+        }
+      }
+    }
+
+    .sections-list {
+      margin-left: 1em;
+
+      .section {
+        a.section-title {
+          margin-right: 2.5em;
+          display: block;
+        }
+
+        a.section-edit, a.section-delete {
+          float: right;
+          margin-left: 0.5em;
+          visibility: hidden;
+        }
+
+        &:hover {
+          a.section-edit, a.section-delete {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+}
