@@ -1,7 +1,11 @@
 <div id="<%= dom_id chapter %>" class="chapter clearfix">
   <%= link_to fa_icon('trash'), book_chapter_path(chapter.book, chapter), remote: true, method: :delete, class: "text-danger chapter-delete", data: {confirm: "Are you sure you want to delete the chapter titled: #{chapter.title}? This is irreversible"} %>
   <%= link_to fa_icon('pencil'), edit_book_chapter_path(chapter.book, chapter), remote: true, class: "chapter-edit" %>
-  <%= link_to chapter.title, "#", class: "chapter-title", remote: true %>
+  <%= link_to "#", class: "chapter-title", remote: true do %>
+    <%= fa_icon 'caret-right' %>
+    <%= fa_icon 'caret-down' %>
+    <%= chapter.title %>
+  <% end %>
   <div class="sections">
     <div class="sections-list">
       <%= render chapter.sections %>

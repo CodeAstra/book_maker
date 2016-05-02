@@ -7,6 +7,14 @@
       a.chapter-title {
         margin-right: 2.5em;
         display: block;
+
+        .fa-caret-right {
+          display: inline-block;
+        }
+
+        .fa-caret-down {
+          display: none;
+        }
       }
 
       a.chapter-edit, a.chapter-delete {
@@ -20,27 +28,32 @@
           visibility: visible;
         }
       }
-    }
 
-    .sections {
-      margin-left: 1em;
+      .sections {
+        margin-left: 1em;
+        display: none;
 
-      .section {
-        a.section-title {
-          margin-right: 2.5em;
-          display: block;
-        }
-
-        a.section-edit, a.section-delete {
-          float: right;
-          margin-left: 0.5em;
-          visibility: hidden;
-        }
-
-        &:hover {
-          a.section-edit, a.section-delete {
-            visibility: visible;
+        .section {
+          a.section-title {
+            margin-right: 2.5em;
+            display: block;
           }
+        }
+      }
+
+      &.expanded {
+        a.chapter-title {
+          .fa-caret-right {
+            display: none;
+          }
+
+          .fa-caret-down {
+            display: inline-block;
+          }
+        }
+
+        .sections {
+          display: block;
         }
       }
     }
