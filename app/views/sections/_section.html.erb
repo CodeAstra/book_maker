@@ -1,5 +1,5 @@
 <% unless section.new_record? %>
   <div id="<%= dom_id section %>" class="section clearfix">
-    <%= link_to section.title, "#", class: "section-title", remote: true %>
+    <%= link_to section.title, book_chapter_section_path(section.chapter.book, section.chapter, section), class: "section-title", remote: true %>
   </div>
 <% end %>
