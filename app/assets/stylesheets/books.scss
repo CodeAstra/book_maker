@@ -1,59 +1,80 @@
 #book {
-  #chapters-list {
-    border-right: 1px solid $dark-color;
-    padding-right: 15px;
+  #sidebar {
+    a {
+      color: $grey-color;
+    }
 
-    .chapter {
-      a.chapter-title {
-        margin-right: 2.5em;
-        display: block;
+    #chapters-list {
+      border-right: 1px solid $grey-color;
+      padding-right: 15px;
 
-        .fa-caret-right {
-          display: inline-block;
-        }
-
-        .fa-caret-down {
-          display: none;
-        }
+      .sortable-placeholder {
+        background-color: lighten($primary-color, 40%);
+        height: 3.5rem;
       }
 
-      a.chapter-edit, a.chapter-delete {
-        float: right;
-        margin-left: 0.5em;
-        visibility: hidden;
-      }
+      .chapter {
+        padding: 0.3em 0;
+        font-size: 1.8rem;
 
-      &:hover {
-        a.chapter-edit, a.chapter-delete {
-          visibility: visible;
+        i.fa-bars {
+          cursor: move;
+          margin-right: 0.4em;
         }
-      }
 
-      .sections {
-        margin-left: 1em;
-        display: none;
-
-        .section {
-          a.section-title {
-            margin-right: 2.5em;
-            display: block;
-          }
-        }
-      }
-
-      &.expanded {
         a.chapter-title {
+          margin-right: 2.5em;
+
           .fa-caret-right {
-            display: none;
+            display: inline-block;
           }
 
           .fa-caret-down {
-            display: inline-block;
+            display: none;
+          }
+        }
+
+        a.chapter-edit, a.chapter-delete {
+          float: right;
+          margin-left: 0.5em;
+          visibility: hidden;
+        }
+
+        &:hover {
+          a.chapter-edit, a.chapter-delete {
+            visibility: visible;
           }
         }
 
         .sections {
-          display: block;
+          margin-left: 4rem;
+          font-size: 1.6rem;
+          display: none;
+
+          .section {
+            padding: 0.3em 0;
+
+            a.section-title {
+              margin-right: 2.5em;
+              display: block;
+            }
+          }
+        }
+
+        &.expanded {
+          a.chapter-title {
+            .fa-caret-right {
+              display: none;
+            }
+
+            .fa-caret-down {
+              display: inline-block;
+            }
+          }
+
+          .sections {
+            display: block;
+          }
         }
       }
     }
