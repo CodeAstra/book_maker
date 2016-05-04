@@ -18,4 +18,8 @@ module ApplicationHelper
 
     return raw(str)
   end
+
+  def refresh_flash_message
+    raw "BookMakerUtils.showFlash('#{j flash_messages_tag}');"
+  end
 end

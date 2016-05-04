@@ -8,3 +8,5 @@ hn:
       deletion_failure: "प्लेस होल्डर फ़्लैश मेसेज"
     sections:
       creation_failure: "प्लेस होल्डर फ़्लैश मेसेज"
+      deletion_success: "प्लेस होल्डर फ़्लैश मेसेज"
+      deletion_failure: "प्लेस होल्डर फ़्लैश मेसेज"

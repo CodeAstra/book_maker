@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
   before_action :fetch_chapter
-  before_action :fetch_section, only: [:show, :update]
+  before_action :fetch_section, only: [:show, :update, :destroy]
 
   def create
     @section = @chapter.sections.new(section_params)
@@ -12,6 +12,16 @@ class SectionsController < ApplicationController
 
   def update
     @section.update_attributes(section_params)
+  end
+
+  def destroy
+    if params[:title_confirmation].downcase == @section.title.downcase
+      @destroy_success = true
+      @section.destroy
+      flash.now[:success] = I18n.t('flash_messages.sections.deletion_success')
+    else
+      flash.now[:danger] = I18n.t('flash_messages.sections.deletion_failure')
+    end
   end
 
 private

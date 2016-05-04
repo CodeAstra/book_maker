@@ -8,3 +8,5 @@ en:
       deletion_failure: "Delete all the section of the chapter first, before deleting the chapter"
     sections:
       creation_failure: "Section creations failed."
+      deletion_success: "Section deleted successfully"
+      deletion_failure: "Section deletion failed, as you entered incorrect title"

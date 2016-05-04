@@ -1,0 +1,8 @@
+$('#section-delete-confirmation-modal').modal('hide');
+<% if @destroy_success %>
+  setTimeout(function() {
+    $('#section-content').html('')
+  }, 500);
+  $('#sidebar .sections-list #<%= dom_id(@section) %>').remove();
+<% end %>
+<%= refresh_flash_message %>
