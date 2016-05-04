@@ -14,6 +14,7 @@ class ChaptersController < ApplicationController
   def update
     @chapter.update_attributes(chapter_params)
     @chapter.reload unless @chapter.valid?
+    @new_sections = { @chapter.id => @chapter.sections.new }
   end
 
   def destroy
