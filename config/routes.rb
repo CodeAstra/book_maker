@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :chapters, only: [:create, :edit, :update, :destroy] do
-      put 'sort', on: :collection
       resources :sections, only: [:create, :show, :update]
     end
   end

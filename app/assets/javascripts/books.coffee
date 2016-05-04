@@ -5,10 +5,11 @@ ChapterSorter =
   saveNewSortOrder: ->
     $.ajax
       method: "PUT"
-      url: "/books/#{$('#book')[0].dataset.bookId}/chapters/sort",
+      url: "/books/#{$('#book')[0].dataset.bookId}",
       dataType: "script"
       data:
-        chapter_ids: ChapterSorter.orderedChapterIds()
+        book:
+          sorted_chapter_ids: ChapterSorter.orderedChapterIds()
   init: ->
     $('#chapters-list').sortable
       handle: '.fa-bars'
