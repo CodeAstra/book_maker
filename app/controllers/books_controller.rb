@@ -2,15 +2,15 @@ class BooksController < ApplicationController
   before_action :fetch_book, only: [:show, :destroy, :edit, :update]
 
   def index
-    @books = Book.all
+    @books = current_user.owned_books
   end
 
   def new
-    @book = Book.new
+    @book = current_user.owned_books.new
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = current_user.owned_books.new(book_params)
     if @book.save
       redirect_to book_path(@book)
     else
@@ -60,6 +60,6 @@ private
   end
 
   def fetch_book
-    @book = Book.find(params[:id])
+    @book = current_user.owned_books.find(params[:id])
   end
 end

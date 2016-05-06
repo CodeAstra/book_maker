@@ -7,12 +7,15 @@
 #  notes      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  owner_id   :integer
 #
 
 class Book < ActiveRecord::Base
   has_many :chapters, dependent: :destroy
+  belongs_to :owner, class_name: User.name
 
   validates :title, presence: true
+  validates :owner, presence: true
 
   def sorted_chapter_ids=(ids_array)
     ids_array = JSON.parse(ids_array)
