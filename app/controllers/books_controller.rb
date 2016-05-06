@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
   before_action :fetch_book, only: [:show, :destroy, :edit, :update]
 
   def index

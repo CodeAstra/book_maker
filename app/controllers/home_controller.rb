@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:land, :translate]
+
   def land
   end
 
