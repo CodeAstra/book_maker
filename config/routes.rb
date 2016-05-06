@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#land'
 
+  devise_for :users
+
   get 'translate' => "home#translate", as: :translate
 
   resources :books do

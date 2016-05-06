@@ -26,6 +26,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'annotate'
+  gem 'letter_opener'
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rails', require: false

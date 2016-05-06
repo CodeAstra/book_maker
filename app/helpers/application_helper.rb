@@ -8,7 +8,7 @@ module ApplicationHelper
 
     flash.each do |fl|
       fl[0] = "success" if fl[0] == "notice"
-      fl[0] = "danger" if fl[0] == "error"
+      fl[0] = "danger" if fl[0] == "error" || fl[0] == "alert"
       str += content_tag(:div, class: "alert alert-#{fl[0]}") do
         content_tag(:button, class: "close", data: {dismiss: "alert"}) do
           content_tag(:span, raw("&times;"))
