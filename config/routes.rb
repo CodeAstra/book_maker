@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#land'
+  authenticated :user do
+    root to: 'books#index', as: :authenticated_root
+  end
+  root to: 'home#land'
 
   devise_for :users
 
