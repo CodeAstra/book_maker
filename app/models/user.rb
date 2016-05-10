@@ -28,4 +28,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_books, class_name: Book.name, foreign_key: :owner_id
+
+  def contributing_to?(bk, include_invitations = false)
+    return true if bk.owner == self
+
+    if include_invitations
+      return Authorship.where(invitee_id: self.id, book_id: bk.id).any?
+    else
+      return Authorship.where(invitee_id: self.id, book_id: bk.id, accepted: true).any?
+    end
+  end
 end

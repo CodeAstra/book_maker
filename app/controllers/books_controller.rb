@@ -25,6 +25,7 @@ class BooksController < ApplicationController
     @chapters.each do |chapter|
       @new_sections[chapter.id] = chapter.sections.new
     end
+    @new_authorship = @book.authorships.new
   end
 
   def update

@@ -1,0 +1,8 @@
+$('#invite-author-modal .alert-danger').addClass('hidden');
+<% if @invalid_email %>
+  $('#invite-author-modal .alert-danger').removeClass('hidden');
+<% else %>
+  $('#invite-author-modal').modal('hide');
+  $('#invite-author-modal form')[0].reset();
+  BookMakerUtils.showFlash('<%= j flash_messages_tag %>')
+<% end %>

@@ -12,6 +12,7 @@
 
 class Book < ActiveRecord::Base
   has_many :chapters, dependent: :destroy
+  has_many :authorships, dependent: :destroy
   belongs_to :owner, class_name: User.name
 
   validates :title, presence: true

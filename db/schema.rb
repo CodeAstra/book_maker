@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506124737) do
+ActiveRecord::Schema.define(version: 20160510113055) do
+
+  create_table "authorships", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "invitee_id"
+    t.integer  "inviter_id"
+    t.boolean  "accepted",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "authorships", ["accepted"], name: "index_authorships_on_accepted"
+  add_index "authorships", ["book_id"], name: "index_authorships_on_book_id"
+  add_index "authorships", ["invitee_id"], name: "index_authorships_on_invitee_id"
+  add_index "authorships", ["inviter_id"], name: "index_authorships_on_inviter_id"
 
   create_table "books", force: :cascade do |t|
     t.string   "title"

@@ -2,6 +2,7 @@
   <div id="book-content" class="col-md-8 col-md-push-4">
     <%= link_to "Delete Book", "#", class: "btn btn-danger pull-right", data: {toggle: "modal", target: "#delete-confirmation-modal"} %>
     <%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary pull-right" %>
+    <%= link_to "Invite Author", "#", class: "btn btn-success pull-right", data: {toggle: "modal", target: "#invite-author-modal"} %>
     <h1><%= @book.title %></h1>
     <div id="section-content">
 
@@ -36,6 +37,29 @@
             <%= text_field_tag(:title_confirmation, "", type: "text", class: "form-control") %>
           </div>
           <%= submit_tag("Confirm", class: "btn btn-danger") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Invite Author Modal -->
+<div class="modal fade" id="invite-author-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Invite New Author</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Please enter the email address of your friend whom you would like to invite as an author to this book.
+        </p>
+
+        <%= simple_form_for [@book, @new_authorship], remote: true do |f| %>
+          <div class="alert alert-danger hidden" role="alert">Please enter valid email address</div>
+          <%= f.input :invitee_email %>
+          <%= f.submit "Invite", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

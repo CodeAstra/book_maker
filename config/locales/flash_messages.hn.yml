@@ -10,3 +10,7 @@ hn:
       creation_failure: "प्लेस होल्डर फ़्लैश मेसेज"
       deletion_success: "प्लेस होल्डर फ़्लैश मेसेज"
       deletion_failure: "प्लेस होल्डर फ़्लैश मेसेज"
+    authorships:
+      non_existing_user: "प्लेस होल्डर फ़्लैश मेसेज"
+      already_contributor: "प्लेस होल्डर फ़्लैश मेसेज"
+      invite_success: "प्लेस होल्डर फ़्लैश मेसेज"
