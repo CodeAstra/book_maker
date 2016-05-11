@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'devise_invitable'
 gem  'ValidateEmail'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
