@@ -1,5 +1,6 @@
 class AuthorshipsController < ApplicationController
   before_action :fetch_book
+  before_action :fetch_authorship, only: [:update, :destroy]
 
   def create
     invitee_email = params[:authorship][:invitee_email]
@@ -18,8 +19,24 @@ class AuthorshipsController < ApplicationController
     end
   end
 
+  def update
+    @authorship.accept!
+    flash[:success] = I18n.t('flash_messages.authorships.accepted')
+    redirect_to root_path
+  end
+
+  def destroy
+    @authorship.destroy
+    flash[:success] = I18n.t('flash_messages.authorships.rejected')
+    redirect_to root_path
+  end
+
 private
   def fetch_book
     @book = Book.find(params[:book_id])
+  end
+
+  def fetch_authorship
+    @authorship = @book.authorships.find(params[:id])
   end
 end

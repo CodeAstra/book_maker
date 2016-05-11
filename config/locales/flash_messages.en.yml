@@ -14,3 +14,5 @@ en:
       non_existing_user: "No such user exists in the app. The user should first singup and then you can invite."
       already_contributor: "The user is already a contributing author to this book. Or an invitation is pending."
       invite_success: "User invited successfully."
+      accepted: "Invitation accepted successfully."
+      rejected: "Invitation rejected successfully."

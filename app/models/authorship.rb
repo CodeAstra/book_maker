@@ -16,12 +16,17 @@ class Authorship < ActiveRecord::Base
   belongs_to :inviter, class_name: User.name
   belongs_to :book
 
-  attr_accessor :invitee_email
+  attr_accessor :invitee_email, :skip_invitation_email
 
   after_create :send_authorship_invitation_email
 
+  def accept!
+    self.update_attribute(:accepted, true)
+  end
+
 private
   def send_authorship_invitation_email
-
+    return if self.skip_invitation_email
+    AuthorshipMailer.invite(self.invitee, self).deliver_now
   end
 end

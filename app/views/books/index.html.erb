@@ -1,3 +1,10 @@
+<% if @invitations.any? %>
+  <div id="authorship-invitations" class="well">
+    <h3>Authorship Invitations Pending Your Approval</h3>
+    <%= render @invitations %>
+  </div>
+<% end %>
+
 <div class="container-fluid">
   <%= link_to "Add new Book", new_book_path, class: "btn btn-success pull-right" %>
   <h1>Make a Book</h1>

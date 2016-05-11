@@ -2,7 +2,8 @@ class BooksController < ApplicationController
   before_action :fetch_book, only: [:show, :destroy, :edit, :update]
 
   def index
-    @books = current_user.owned_books
+    @books = current_user.authoring_books
+    @invitations = current_user.authorship_invitations
   end
 
   def new

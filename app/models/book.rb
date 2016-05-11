@@ -18,6 +18,8 @@ class Book < ActiveRecord::Base
   validates :title, presence: true
   validates :owner, presence: true
 
+  after_create :add_owner_as_author
+
   def sorted_chapter_ids=(ids_array)
     ids_array = JSON.parse(ids_array)
     grouped_chapters = self.chapters.where(id: ids_array).group_by(&:id)
@@ -29,5 +31,12 @@ class Book < ActiveRecord::Base
 
       index_no += 1
     end
+  end
+
+private
+  def add_owner_as_author
+    invite = self.authorships.new(invitee: self.owner, inviter: self.owner, accepted: true)
+    invite.skip_invitation_email = true
+    invite.save!
   end
 end

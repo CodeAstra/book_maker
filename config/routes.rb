@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :chapters, only: [:create, :edit, :update, :destroy] do
       resources :sections, only: [:create, :show, :update, :destroy]
     end
-    resources :authorships, only: [:create]
+    resources :authorships, only: [:create, :update, :destroy]
   end
 
   # Example of regular route:
