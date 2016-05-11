@@ -3,6 +3,9 @@ class AuthorshipsController < ApplicationController
   before_action :fetch_authorship, only: [:update, :destroy]
 
   def create
+    @new_authorship = @book.authorships.new
+    authorize! :create, @new_authorship
+
     invitee_email = params[:authorship][:invitee_email]
     if ValidateEmail.validate(invitee_email)
       @invitee = User.where(email: invitee_email).first
@@ -23,12 +26,16 @@ class AuthorshipsController < ApplicationController
   end
 
   def update
+    authorize! :update, @authorship
+
     @authorship.accept!
     flash[:success] = I18n.t('flash_messages.authorships.accepted')
     redirect_to root_path
   end
 
   def destroy
+    authorize! :destroy, @authorship
+
     @authorship.destroy
     flash[:success] = I18n.t('flash_messages.authorships.rejected')
     redirect_to root_path
@@ -44,7 +51,9 @@ private
   end
 
   def create_invitation
-    @book.authorships.create(invitee: @invitee, inviter: current_user)
+    @new_authorship.invitee = @invitee
+    @new_authorship.inviter = current_user
+    @new_authorship.save!
     flash.now[:success] = I18n.t('flash_messages.authorships.invite_success')
   end
 end
