@@ -7,15 +7,15 @@ class AuthorshipsController < ApplicationController
     if ValidateEmail.validate(invitee_email)
       @invitee = User.where(email: invitee_email).first
       if @invitee.nil?
-        flash.now[:danger] = I18n.t('flash_messages.authorships.non_existing_user')
-        User.invite!({:email => invitee_email}, current_user) do |usr|
+        @invitee = User.invite!({:email => invitee_email}, current_user) do |usr|
           usr.invited_book = @book
         end
+        @invitee.skip_authorship_invitation_email = true
+        create_invitation
       elsif @invitee.contributing_to?(@book, true)
         flash.now[:danger] = I18n.t('flash_messages.authorships.already_contributor')
       else
-        @book.authorships.create(invitee: @invitee, inviter: current_user)
-        flash.now[:success] = I18n.t('flash_messages.authorships.invite_success')
+        create_invitation
       end
     else
       @invalid_email = true
@@ -41,5 +41,10 @@ private
 
   def fetch_authorship
     @authorship = @book.authorships.find(params[:id])
+  end
+
+  def create_invitation
+    @book.authorships.create(invitee: @invitee, inviter: current_user)
+    flash.now[:success] = I18n.t('flash_messages.authorships.invite_success')
   end
 end

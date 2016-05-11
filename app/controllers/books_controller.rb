@@ -62,6 +62,6 @@ private
   end
 
   def fetch_book
-    @book = current_user.owned_books.find(params[:id])
+    @book = current_user.authoring_books.find(params[:id])
   end
 end

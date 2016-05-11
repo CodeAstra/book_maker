@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :authorship_invitations, -> { where(accepted: false) }, class_name: Authorship.name, foreign_key: :invitee_id
   has_many :authoring_books, through: :authorships, source: :book
 
-  attr_accessor :invited_book
+  attr_accessor :invited_book, :skip_authorship_invitation_email
 
   def contributing_to?(bk, include_invitations = false)
     return true if bk.owner == self

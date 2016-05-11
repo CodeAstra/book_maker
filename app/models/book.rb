@@ -36,7 +36,7 @@ class Book < ActiveRecord::Base
 private
   def add_owner_as_author
     invite = self.authorships.new(invitee: self.owner, inviter: self.owner, accepted: true)
-    invite.skip_invitation_email = true
+    self.owner.skip_authorship_invitation_email = true
     invite.save!
   end
 end
