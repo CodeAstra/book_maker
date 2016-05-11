@@ -1,11 +1,15 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
-
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
-
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
+<h1>Welcome to <%= APP_NAME %>, <%= @resource.email %></h1>
+<p>
+  <%= @resource.invited_by.email %> has invited you to co-author the book titled <%= @resource.invited_book.title %>.
+</p>
+<p>
+  To accept the invitation, just follow this link: <%= link_to accept_invitation_url(@resource, :invitation_token => @token), accept_invitation_url(@resource, :invitation_token => @token) %>.
+</p>
 
 <% if @resource.invitation_due_at %>
   <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
 <% end %>
 
 <p><%= t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+
+<p>Thanks for being part of the great community and have a great day!</p>
