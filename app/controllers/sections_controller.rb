@@ -4,17 +4,24 @@ class SectionsController < ApplicationController
 
   def create
     @section = @chapter.sections.new(section_params)
+    authorize! :create, @section
+
     @save_success = @section.save
   end
 
   def show
+    authorize! :read, @section
   end
 
   def update
+    authorize! :update, @section
+
     @section.update_attributes(section_params)
   end
 
   def destroy
+    authorize! :destroy, @section
+
     if params[:title_confirmation].downcase == @section.title.downcase
       @destroy_success = true
       @section.destroy

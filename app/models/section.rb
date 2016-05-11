@@ -13,6 +13,7 @@
 
 class Section < ActiveRecord::Base
   belongs_to :chapter
+  belongs_to :book, through: :chapter
 
   validates :title, presence: true
 end
