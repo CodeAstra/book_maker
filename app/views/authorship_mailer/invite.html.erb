@@ -1,0 +1,8 @@
+<h1>Welcome to <%= APP_NAME %>, <%= @user.email %></h1>
+<p>
+  <%= @authorship.inviter.email %> has invited you to co-author the book titled <%= @authorship.book.title %>.
+</p>
+<p>
+  To accept the invitation, just follow this link: <%= link_to @url, @url %>.
+</p>
+<p>Thanks for being part of the great community and have a great day!</p>
