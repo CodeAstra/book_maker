@@ -4,14 +4,17 @@ class BooksController < ApplicationController
   def index
     @books = current_user.authoring_books
     @invitations = current_user.authorship_invitations
+    @new_book = Book.new
   end
 
   def new
     @book = current_user.owned_books.new
+    authorize! :create, @book
   end
 
   def create
     @book = current_user.owned_books.new(book_params)
+    authorize! :create, @book
     if @book.save
       redirect_to book_path(@book)
     else
@@ -20,6 +23,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    authorize! :read, @book
+
     @chapters = @book.chapters.includes(:sections).all
     @new_chapter = @book.chapters.new
     @new_sections = {}
@@ -30,6 +35,8 @@ class BooksController < ApplicationController
   end
 
   def update
+    authorize! :update, @book
+
     if @book.update_attributes(book_params)
       if params[:book][:sorted_chapter_ids]
         render nothing: true
@@ -43,6 +50,8 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @book
+
     if params[:title_confirmation].downcase == @book.title.downcase
       @book.destroy
       flash[:success] = I18n.t('flash_messages.books.deletion_success')
@@ -54,6 +63,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    authorize! :update, @book
   end
 
 private
