@@ -31,6 +31,7 @@ group :development do
   gem 'annotate'
   gem 'letter_opener'
   gem 'erd'
+  gem 'faker'
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rails', require: false
