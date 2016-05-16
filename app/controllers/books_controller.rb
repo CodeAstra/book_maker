@@ -34,6 +34,11 @@ class BooksController < ApplicationController
     @new_authorship = @book.authorships.new
   end
 
+  def preview
+    @book = current_user.authoring_books.includes(chapters: [:sections]).find(params[:id])
+    authorize! :read, @book
+  end
+
   def update
     authorize! :update, @book
 
