@@ -92,3 +92,22 @@
     }
   }
 }
+
+#book-preview {
+  h1, h2, h3 {
+    font-weight: $thin-font-weight;
+  }
+
+  .chapter {
+    margin-left: 1em;
+
+    .section {
+      margin-left: 1em;
+
+      .section-content {
+        margin-left: 1em;
+        font-size: 1.3em;
+      }
+    }
+  }
+}

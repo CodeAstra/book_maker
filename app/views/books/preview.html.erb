@@ -1,11 +1,21 @@
 <%= link_to "Back to Edit View", book_path(@book), class: "btn btn-primary pull-right" %>
-<h1><%= @book.title %></h1>
-<% @book.chapters.each do |chapter| %>
-  <h2><%= chapter.title %></h2>
-  <% chapter.sections.each do |section| %>
-    <h3><%= section.title %></h3>
-    <div class="markable">
+<div id="book-preview">
+  <h1><%= @book.title %></h1>
+  <% chapter_counter = 0 %>
+  <% @book.chapters.each do |chapter| %>
+    <div class="chapter">
+      <% chapter_counter += 1 %>
+      <h2><%= "#{chapter_counter}. #{chapter.title}" %></h2>
+      <% section_counter = 0 %>
+      <% chapter.sections.each do |section| %>
+        <div class="section">
+          <% section_counter += 1 %>
+          <h3><%= "#{chapter_counter}.#{section_counter}. #{section.title}" %></h3>
+          <div class="markable section-content">
 <%= raw section.content %>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
-<% end %>
+</div>
