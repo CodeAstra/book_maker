@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511101957) do
+ActiveRecord::Schema.define(version: 20160516104252) do
 
   create_table "authorships", force: :cascade do |t|
     t.integer  "book_id"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20160511101957) do
   add_index "authorships", ["invitee_id"], name: "index_authorships_on_invitee_id"
   add_index "authorships", ["inviter_id"], name: "index_authorships_on_inviter_id"
 
+  create_table "book_versions", force: :cascade do |t|
+    t.integer  "book_id"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "book_versions", ["book_id"], name: "index_book_versions_on_book_id"
+
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.text     "notes"
@@ -36,6 +45,15 @@ ActiveRecord::Schema.define(version: 20160511101957) do
   end
 
   add_index "books", ["owner_id"], name: "index_books_on_owner_id"
+
+  create_table "chapter_versions", force: :cascade do |t|
+    t.integer  "book_version_id"
+    t.string   "title"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "chapter_versions", ["book_version_id"], name: "index_chapter_versions_on_book_version_id"
 
   create_table "chapters", force: :cascade do |t|
     t.string   "title"
@@ -48,6 +66,16 @@ ActiveRecord::Schema.define(version: 20160511101957) do
 
   add_index "chapters", ["book_id"], name: "index_chapters_on_book_id"
   add_index "chapters", ["position"], name: "index_chapters_on_position"
+
+  create_table "section_versions", force: :cascade do |t|
+    t.integer  "chapter_version_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "section_versions", ["chapter_version_id"], name: "index_section_versions_on_chapter_version_id"
 
   create_table "sections", force: :cascade do |t|
     t.string   "title"
