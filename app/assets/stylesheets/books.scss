@@ -79,4 +79,16 @@
       }
     }
   }
+
+  #book-content {
+    #section-content {
+      .preview-toggler-actions {
+        margin: 1em 0;
+
+        .separator {
+          margin: 0 1em;
+        }
+      }
+    }
+  }
 }
