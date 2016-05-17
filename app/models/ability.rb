@@ -51,6 +51,17 @@ class Ability
       book.owner == user
     end
 
+    ###############
+    # BookVersion #
+    ###############
+    can :create, BookVersion do |book_version|
+      book_version.book.owner == user
+    end
+
+    can :read, BookVersion do |book_version|
+      user.contributing_to?(book_version.book)
+    end
+
     ###########
     # Chapter #
     ###########

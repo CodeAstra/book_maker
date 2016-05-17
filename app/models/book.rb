@@ -13,6 +13,7 @@
 class Book < ActiveRecord::Base
   has_many :chapters, dependent: :destroy
   has_many :authorships, dependent: :destroy
+  has_many :versions, class_name: BookVersion.name, dependent: :destroy
   belongs_to :owner, class_name: User.name
 
   validates :title, presence: true

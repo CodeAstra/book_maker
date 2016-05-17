@@ -4,6 +4,25 @@
     <%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary pull-right" if can? :update, @book %>
     <%= link_to "Invite Author", "#", class: "btn btn-success pull-right", data: {toggle: "modal", target: "#invite-author-modal"} if can? :create, @new_authorship %>
     <%= link_to "Preview", preview_book_path(@book), class: "btn btn-primary pull-right" %>
+    <div class="btn-group pull-right">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Versions <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <% @book.versions.each do |version| %>
+          <% next if version.new_record? %>
+          <li>
+            <%= link_to version.version_no, book_book_version_path(@book, version) %>
+          </li>
+        <% end %>
+        <% if can? :create, @new_book_version %>
+          <li role="separator" class="divider"></li>
+          <li>
+            <%= link_to "Create New", book_book_versions_path(@book), method: :post %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     <h1><%= @book.title %></h1>
     <div id="section-content">
 

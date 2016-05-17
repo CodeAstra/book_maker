@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :sections, only: [:create, :show, :update, :destroy]
     end
     resources :authorships, only: [:create, :update, :destroy]
+    resources :book_versions, only: [:create, :show]
   end
 
   # Example of regular route:

@@ -1,9 +1,18 @@
 <%= link_to "Back to Edit View", book_path(@book), class: "btn btn-primary pull-right" %>
+<% resource = @book_version || @book %>
+<% if @book_version %>
+  <h1>
+    <%= @book_version.title %>
+    <small>
+      Version: <%= @book_version.version_no %>
+    </small>
+  </h1>
+<% end %>
 <div class="row">
   <div id="book-preview-nav" data-spy="affix" data-target="#book-preview">
     <% chapter_counter = 0 %>
     <ul id="chapters-links" class="nav nav-stacked fixed">
-      <% @book.chapters.each do |chapter| %>
+      <% resource.chapters.each do |chapter| %>
         <% chapter_counter += 1 %>
         <li>
           <%= link_to "#{chapter_counter}. #{chapter.title}", "##{dom_id(chapter)}", class: "chapter-link" %>
@@ -19,9 +28,9 @@
     </ul>
   </div>
   <div id="book-preview">
-    <h1><%= @book.title %></h1>
+    <h1><%= resource.title %></h1>
     <% chapter_counter = 0 %>
-    <% @book.chapters.each do |chapter| %>
+    <% resource.chapters.each do |chapter| %>
       <div class="chapter">
         <% chapter_counter += 1 %>
         <h2 id="<%= dom_id(chapter) %>"><%= "#{chapter_counter}. #{chapter.title}" %></h2>
@@ -38,5 +47,4 @@
       </div>
     <% end %>
   </div>
-
 </div>

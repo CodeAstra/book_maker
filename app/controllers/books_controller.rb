@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :fetch_book, only: [:show, :destroy, :edit, :update]
+  before_action :fetch_book, only: [:destroy, :edit, :update]
 
   def index
     @books = current_user.authoring_books
@@ -23,6 +23,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = current_user.authoring_books.includes(:versions).find(params[:id])
     authorize! :read, @book
 
     @chapters = @book.chapters.includes(:sections).all
@@ -32,6 +33,7 @@ class BooksController < ApplicationController
       @new_sections[chapter.id] = chapter.sections.new
     end
     @new_authorship = @book.authorships.new
+    @new_book_version = @book.versions.new
   end
 
   def preview
