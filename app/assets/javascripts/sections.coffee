@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+@SectionUtils =
+  previewToggler: ->
+    $('#section-preview-raw').html(marked($('#section-preview-raw').html()))
+    $('#section-edit a.preview-trigger').click (ev) ->
+      ev.preventDefault()
+      $('#section-preview').html(marked($('form#section-edit-form textarea').val()))
+      $('form#section-edit-form').addClass('hidden')
+      $('#section-preview').removeClass('hidden')
+
+    $('#section-edit a.editor-trigger').click (ev) ->
+      ev.preventDefault()
+      $('form#section-edit-form').removeClass('hidden')
+      $('#section-preview').addClass('hidden')

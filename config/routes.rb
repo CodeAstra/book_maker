@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'translate' => "home#translate", as: :translate
 
   resources :books do
+    get 'preview', on: :member
     resources :chapters, only: [:create, :edit, :update, :destroy] do
       resources :sections, only: [:create, :show, :update, :destroy]
     end

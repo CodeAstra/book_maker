@@ -13,23 +13,30 @@
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#section-preview" aria-controls="home" role="tab" data-toggle="tab">Preview</a></li>
+    <li role="presentation" class="active"><a href="#section-content-tab" aria-controls="section-content-tab" role="tab" data-toggle="tab">Content</a></li>
     <% if can? :update, @section %>
-      <li role="presentation"><a href="#section-edit" aria-controls="profile" role="tab" data-toggle="tab">Edit</a></li>
+      <li role="presentation"><a href="#section-edit" aria-controls="section-edit" role="tab" data-toggle="tab">Edit</a></li>
     <% end %>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="section-preview">
+    <div role="tabpanel" class="tab-pane active" id="section-content-tab">
       <%= render 'sections/section_preview' %>
     </div>
     <% if can? :update, @section %>
       <div role="tabpanel" class="tab-pane" id="section-edit">
-        <%= simple_form_for [@book, @chapter, @section], remote: true do |f| %>
+        <div class="preview-toggler-actions">
+          <%= link_to "Editor", "", class: "editor-trigger" %>
+          <span class="separator">|</span>
+          <%= link_to "Preview", "", class: "preview-trigger" %>
+        </div>
+        <%= simple_form_for [@book, @chapter, @section], remote: true, html: {id: "section-edit-form"} do |f| %>
           <%= f.input :content %>
           <%= f.submit "Update", class: "btn btn-primary" %>
         <% end %>
+
+        <div id="section-preview" class="hidden"></div>
       </div>
     <% end %>
   </div>

@@ -1,0 +1,42 @@
+<%= link_to "Back to Edit View", book_path(@book), class: "btn btn-primary pull-right" %>
+<div class="row">
+  <div id="book-preview-nav" data-spy="affix" data-target="#book-preview">
+    <% chapter_counter = 0 %>
+    <ul id="chapters-links" class="nav nav-stacked fixed">
+      <% @book.chapters.each do |chapter| %>
+        <% chapter_counter += 1 %>
+        <li>
+          <%= link_to "#{chapter_counter}. #{chapter.title}", "##{dom_id(chapter)}", class: "chapter-link" %>
+          <ul class="nav nav-stacked">
+            <% section_counter = 0 %>
+            <% chapter.sections.each do |section| %>
+              <% section_counter += 1 %>
+              <%= link_to "#{chapter_counter}.#{section_counter}. #{section.title}", "##{dom_id(section)}", class: "section-link" %>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="book-preview">
+    <h1><%= @book.title %></h1>
+    <% chapter_counter = 0 %>
+    <% @book.chapters.each do |chapter| %>
+      <div class="chapter">
+        <% chapter_counter += 1 %>
+        <h2 id="<%= dom_id(chapter) %>"><%= "#{chapter_counter}. #{chapter.title}" %></h2>
+        <% section_counter = 0 %>
+        <% chapter.sections.each do |section| %>
+          <div class="section">
+            <% section_counter += 1 %>
+            <h3 id="<%= dom_id(section) %>"><%= "#{chapter_counter}.#{section_counter}. #{section.title}" %></h3>
+            <div class="markable section-content">
+<%= raw section.content %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

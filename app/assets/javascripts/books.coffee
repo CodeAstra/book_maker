@@ -18,9 +18,17 @@ ChapterSorter =
       update: ->
         ChapterSorter.saveNewSortOrder()
 
+BookPreview =
+  init: ->
+    $('body').scrollspy
+        target: '#book-preview-nav'
+        offset: 100
+
+
 $ ->
   $('#book #sidebar #chapters-list .chapter .chapter-title').click (ev) ->
     ev.preventDefault()
     $(@).parents('.chapter').toggleClass('expanded')
 
   ChapterSorter.init()
+  BookPreview.init()

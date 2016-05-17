@@ -1,2 +1,3 @@
-$('a[href="#section-preview"]').tab('show');
-$('#section-preview').html('<%= j render("sections/section_preview") %>');
+$('a[href="#section-content-tab"]').tab('show');
+$('#section-preview-raw').replaceWith('<%= j render("sections/section_preview") %>');
+SectionUtils.previewToggler();

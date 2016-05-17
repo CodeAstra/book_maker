@@ -79,4 +79,70 @@
       }
     }
   }
+
+  #book-content {
+    #section-content {
+      .preview-toggler-actions {
+        margin: 1em 0;
+
+        .separator {
+          margin: 0 1em;
+        }
+      }
+    }
+  }
+}
+
+#book-preview {
+  margin-left: 230px;
+
+  h1, h2, h3 {
+    font-weight: $thin-font-weight;
+  }
+
+  .chapter {
+    margin-left: 1em;
+
+    .section {
+      margin-left: 1em;
+
+      .section-content {
+        margin-left: 1em;
+        font-size: 1.3em;
+      }
+    }
+  }
+}
+
+#book-preview-nav {
+  width: 200px;
+  float: left;
+
+  ul#chapters-links {
+    & > li {
+      ul {
+        display: none;
+      }
+
+      &.active {
+        ul {
+          display: block;
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &.chapter-link {
+      padding: 0.7em 0 0.2em;
+    }
+
+    &.section-link {
+      padding: 0.2em 0 0.2em 2em;
+    }
+  }
 }
